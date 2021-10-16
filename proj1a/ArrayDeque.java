@@ -1,8 +1,8 @@
 public class ArrayDeque<T> {
-    T[] array;
-    int nextFirst;
-    int nextLast;
-    int size;
+    private T[] array;
+    private int nextFirst;
+    private int nextLast;
+    private int size;
 
     public ArrayDeque(){
         array=(T[])new Object[8];
@@ -23,7 +23,7 @@ public class ArrayDeque<T> {
         array=a;
     }
 
-    public void sizeLimit(){
+    private void sizeLimit(){
         T[] a=(T[])new Object[array.length/2];
         int l=a.length/2;
         for (int c=nextLast;c!=nextFirst;c=(c+1)% array.length) {
@@ -46,7 +46,9 @@ public class ArrayDeque<T> {
     public void printDeque(){
         for (int c=nextFirst;(c+1)% array.length!=nextLast;c=(c+1)% array.length){
             c=(c+1)% array.length;
+            if(array[c]!=null){
             System.out.print(array[c]+" ");
+            }
         }
     }
 
@@ -69,16 +71,24 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst(){
+        if (isEmpty()){
+            return null;
+        }
         nextFirst=(nextFirst+1)% array.length;
         T c=array[nextFirst];
         array[nextFirst]=null;
+        size+=1;
         return c;
     }
 
     public T removeLast(){
+        if (isEmpty()){
+            return null;
+        }
         nextLast=(nextLast-1+ array.length)% array.length;
         T c=array[nextLast];
         array[nextLast]=null;
+        size+=1;
         return c;
     }
 

@@ -1,5 +1,5 @@
 public class LinkedListDeque<T> {
-    public class Node {
+    private class Node {
         public T value;
         public Node next = null;
         public Node previous = null;
@@ -9,7 +9,7 @@ public class LinkedListDeque<T> {
         }
     }
 
-    public Node head;
+    private Node head;
     private int size;
 
     public LinkedListDeque() {
@@ -55,6 +55,9 @@ public class LinkedListDeque<T> {
     }
 
     public T removeFirst() {
+        if (isEmpty()){
+            return null;
+        }
         Node c = head.next;
         Node n = c.next;
         head.next = n;
@@ -64,6 +67,9 @@ public class LinkedListDeque<T> {
     }
 
     public T removeLast() {
+        if (isEmpty()){
+            return null;
+        }
         Node c = head.previous;
         Node p = c.previous;
         head.previous = p;
