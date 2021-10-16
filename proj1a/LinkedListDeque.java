@@ -24,7 +24,7 @@ public class LinkedListDeque<T> {
         Node n = head.next;
         head.next = c;
         c.previous = head;
-        head.next = n;
+        c.next = n;
         n.previous = c;
         size += 1;
     }
