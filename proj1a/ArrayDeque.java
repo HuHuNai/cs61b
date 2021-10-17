@@ -12,12 +12,15 @@ public class ArrayDeque<T> {
     }
 
     private void resize(){
-        T[] a=(T[])new Object[array.length*2];
         int l= array.length;
-        for (int c=nextLast;c!=nextFirst;c=(c+1)% array.length) {
+        T[] a=(T[])new Object[l*2];
+        int c=nextLast;
+        do {
             a[l]=array[c];
             l+=1;
+            c=(c+1)%array.length;
         }
+        while (c!=nextLast);
         nextFirst= array.length-1;
         nextLast=0;
         array=a;
@@ -77,7 +80,7 @@ public class ArrayDeque<T> {
         nextFirst=(nextFirst+1)% array.length;
         T c=array[nextFirst];
         array[nextFirst]=null;
-        size+=1;
+        size-=1;
         return c;
     }
 
@@ -88,7 +91,7 @@ public class ArrayDeque<T> {
         nextLast=(nextLast-1+ array.length)% array.length;
         T c=array[nextLast];
         array[nextLast]=null;
-        size+=1;
+        size-=1;
         return c;
     }
 

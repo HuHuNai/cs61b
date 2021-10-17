@@ -91,22 +91,20 @@ public class LinkedListDeque<T> {
             Node c = head;
             index = size - 1 - index;
             for (int count = -1; count < index; count++) {
-                c = c.next;
+                c = c.previous;
             }
         }
         return out;
     }
     private T helper(Node c,int index){
         T out=null;
-        if (index<size&&index>=0){
-            int count=-1;
-            if (count==index){
+        if (index<size){
+            if (index<0){
                 out=c.value;
+                return out;
             }
             else{
-                c=c.next;
-                count++;
-
+                return helper(c.next,index-1);
             }
         }
         return out;
