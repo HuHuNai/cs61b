@@ -4,8 +4,10 @@ public class Test {
         for (int i=0;i<1000;i++){
             a1.addLast(i);
         }
-        System.out.println(a1.get(999));
-        a1.removeLast();
+        for (int i=1;i<999;i++){
+            a1.removeLast();
+        }
+        System.out.println(a1.get(0));
 
         LinkedListDeque<Integer> l1=new LinkedListDeque<Integer>();
         l1.addFirst(0);
