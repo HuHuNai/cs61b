@@ -27,7 +27,7 @@ public class ArrayDeque<T> {
     }
 
     private void sizeLimit() {
-        if (Double.valueOf(size) / array.length >= 0.25) {
+        if (Double.valueOf(size) / array.length >= 0.25 || size<=16) {
             return;
         }
         T[] a = (T[]) new Object[array.length / 2];
