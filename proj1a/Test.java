@@ -7,7 +7,7 @@ public class Test {
         for (int i=0;i<64;i++){
             a1.removeFirst();
         }
-        System.out.println(a1.getLength());
+
 
     }
 }

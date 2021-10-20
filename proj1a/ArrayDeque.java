@@ -11,7 +11,7 @@ public class ArrayDeque<T> {
         nextLast = 4;
     }
 
-    public int getLength(){
+    private int getLength() {
         return array.length;
     }
 
@@ -31,7 +31,7 @@ public class ArrayDeque<T> {
     }
 
     private void sizeLimit() {
-        if (size*4>=array.length || array.length<16) {
+        if (size * 4 >= array.length || array.length < 16) {
             return;
         }
         T[] a = (T[]) new Object[array.length / 2];
